@@ -118,7 +118,7 @@ export default function ProductPage() {
                                  <hr className='hr-bw'/> 
                                 
 
-                                <div className="my-3">
+                                <div className="my-3 d-flex align-items-center">
                                     <button className="btn btn-light mx-3" disabled={productQuantity > 1 ? false : true} onClick={() => setproductQuantity(productQuantity - 1)}><AiOutlineMinus/></button>
                                     {productQuantity}
                                     <button className="btn btn-light mx-3" onClick={() => setproductQuantity(productQuantity + 1)}><AiOutlinePlus/></button>
