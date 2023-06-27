@@ -18,16 +18,18 @@ function LoginProject() {
   const navigate = useNavigate();
 const [email,setEmail]=useState();
 const[password,setpassword]=useState()
+
 const [authenticated, setauthenticated] = useState(
   localStorage.getItem(localStorage.getItem("authenticated") || false)
 );
+
 const users = [{ email: "musfirah@gamil.com", password: "testpassword" }];
 const handleSubmit = (e) => {
   e.preventDefault();
   const account = users.find((user) => user.email=== email);
   if (account && account.password === password) {
     localStorage.setItem("authenticated", true);
-    navigate("/");
+    navigate("/products");
   }
 };
 

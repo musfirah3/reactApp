@@ -7,17 +7,17 @@ import Footer from './Components/Footer';
 import CategoryPage from './assets/pages/CategoryPage';
 import ErrorPage from './assets/pages/ErrorPage';
 import ProductPage from './assets/pages/ProductPage';
-import { Route,Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
-import {Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Products from './assets/pages/Home/Products';
 
 
 
 
 function App() {
- const [user, setUser]=useState(true)
+  const [user, setUser] = useState(true)
 
 
 
@@ -25,27 +25,27 @@ function App() {
     <>
 
 
-      <NavigationBar/>
+      <NavigationBar />
       {user ? (
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/products' element={<Products/>}/>
+          <Route path='/' element={<Home />} />
+          <Route path='/products' element={<Products />} />
           <Route path='/products/category/:CategoryName' element={<CategoryPage />} />
           <Route path="/products/:productID" element={<ProductPage />} />
-          <Route path='*' element={<ErrorPage/>}/>
-          </Routes>
+          <Route path='*' element={<ErrorPage />} />
+        </Routes>
 
-      ):(
+      ) : (
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/login' element={<LoginProject/>}/>
-          <Route path='/registration' element={<RegistrationForm/>}/>
-          <Route path='*' element={<Navigate to="/login" replace={true}/>}/>
-          </Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<LoginProject />} />
+          <Route path='/registration' element={<RegistrationForm />} />
+          <Route path='*' element={<Navigate to="/login" />} />
+        </Routes>
 
-       ) 
-       } 
-      <Footer/> 
+      )
+      }
+      <Footer />
     </>
   )
 }

@@ -4,6 +4,7 @@ import { Badge, Button, Card, Image, List, Rate, Spin, Typography } from 'antd'
 import { getProductsByCategory } from '../../Api'
 import { Link, useParams } from 'react-router-dom'
 
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 
 
@@ -20,23 +21,25 @@ const [loading,setLoading]=useState(false)
   }, [param]);
 
   if(loading){
-    return  <Spin tip="Loading..." size="large">
-    <div className="content" style={{
-       margin:'100px'
-      }} />
+    return <div className='d-flex justify-content-center align-items-center' style={{ width: '80vw', height: '80vh' }}>
+    <Spin tip="Loading..." size="large">
+    <div className="content"  />
   </Spin>
+  </div>
   }
   return (
 
     <List
+    className='bkgroundCard'
       grid={{ column: 3 }}
       renderItem={(product, index) => {
         return (
           <Badge.Ribbon className='itemCardBadge' text={product.discountPercentage} color='green'>
+            <Link to={`/products/${product.id}`} className='text-decoration-none'>
             <Card className='itemCard'
-              title={product.title} key={index} cover={<Image className='itemCardImage' src={product.thumbnail} />}
+               title={product.title} key={index} cover={<Image className='itemCardImage' src={product.thumbnail} />}
               actions={[
-                <Rate allowHalf disabled value={product.rating} />, <Link to={`/products/${product.id}` }><Button>Preview</Button></Link>
+                <Rate allowHalf disabled value={product.rating} />,<Button type='link'><AiOutlineShoppingCart className='m-1'/> Add to Cart</Button>  
               ]}
             >
               <Card.Meta title={
@@ -49,10 +52,11 @@ const [loading,setLoading]=useState(false)
                   </Typography.Text>
                 </Typography.Paragraph>
               }
-                description={<Typography.Paragraph ellipsis={{ rows: 2, expandable: true, symbol: 'more' }}>{product.description}</Typography.Paragraph>}
+                description={<Typography.Paragraph ellipsis={{ rows: 1, expandable: true, symbol: 'more' }}>{product.description}</Typography.Paragraph>}
 
               ></Card.Meta>
             </Card>
+            </Link>
           </Badge.Ribbon>
         )
       }}

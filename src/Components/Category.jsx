@@ -7,14 +7,26 @@ import { useEffect, useState } from 'react';
 
 
 function Category() {
+    const [loading, setLoading]=useState(false)
     const [categories, setCategories] = useState([])
 
 
 
     useEffect(() => {
+        setLoading(true)
         axios.get('https://dummyjson.com/products/categories').then(json => setCategories(json.data))
-
+setLoading(false)
     }, [])
+    if (loading) {
+        return <div className='d-flex justify-content-center align-items-center' style={{ width: '40vw', height: '40vh' }}>
+    
+    
+          <Spin tip="Loading..." size="large">
+            <div className="content"/>
+          </Spin>
+          </div>
+      
+      }
     return (
 
         <div className="container ">
