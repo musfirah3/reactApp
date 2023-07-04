@@ -1,43 +1,38 @@
-import React, { useState} from "react";
-import Swal from "sweetalert2";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+
 import LoginFormImage from './../../images/login.avif'
 import { AiFillFacebook } from 'react-icons/ai'
-import {AiFillTwitterSquare} from 'react-icons/ai'
-import {AiFillLinkedin} from 'react-icons/ai'
-import { useNavigate } from "react-router-dom";
+import { AiFillTwitterSquare } from 'react-icons/ai'
+import { AiFillLinkedin } from 'react-icons/ai'
+
 
 
 function LoginProject() {
-  const showAlert = () => {
-    Swal.fire({
-      icon: 'success',
-      title: 'Submit..',
-      text: 'Your form has been submitted!'
-    })
-  }
-  const navigate = useNavigate();
-const [email,setEmail]=useState();
-const[password,setpassword]=useState()
+  const [email, setEmail] = useState("");
+  const [password, setpassword] = useState("");
 
-const [authenticated, setauthenticated] = useState(
-  localStorage.getItem(localStorage.getItem("authenticated") || false)
-);
+  // getting email or password in local storage
+  const userName = localStorage.getItem("email")
+  ? localStorage.getItem("email")
+  : "musfirah@gmail.com";
+const userPassword = localStorage.getItem("password")
+  ? localStorage.getItem("password")
+  : "password";
 
-const users = [{ email: "musfirah@gamil.com", password: "testpassword" }];
-const handleSubmit = (e) => {
-  e.preventDefault();
-  const account = users.find((user) => user.email=== email);
-  if (account && account.password === password) {
-    localStorage.setItem("authenticated", true);
-    navigate("/products");
-  }
-};
+  // Submit function
+  const getUserInfo = (e) => {
+    e.preventDefault();
+    if (email === userName && password === userPassword) {
+      toast.success("Login Success");
+    } else {
+      toast.error("Invalid Email OR password");
+    }
+  
+  };
 
-  // const getUserInfo = (e) => {
-  //   e.preventDefault();
-  //   const payload = { email, password };
-  //   console.log(payload);
-  // };
+
+
   return (
     <>
       <section className="bg-success bg-opacity-25">
@@ -53,13 +48,13 @@ const handleSubmit = (e) => {
                     </div>
                     {/* Sing -in links */}
                     <p className="fw-bold m-3 ">
-                      Sign in with 
+                      Sign in with
                       <div className="d-flex justify-content-around">
-                      <span className="fa-lg m2" style={{color: "#3b5998" }}><AiFillFacebook /></span>
-                      <span className="fa-lg m2" style={{color: "#00acee" }}><AiFillTwitterSquare/></span>
-                      <span className="fa-lg m2" style={{color: "#0072b1" }}><AiFillLinkedin /></span>
+                        <span className="fa-lg m2" style={{ color: "#3b5998" }}><AiFillFacebook /></span>
+                        <span className="fa-lg m2" style={{ color: "#00acee" }}><AiFillTwitterSquare /></span>
+                        <span className="fa-lg m2" style={{ color: "#0072b1" }}><AiFillLinkedin /></span>
                       </div>
-                      
+
                     </p>
                     <div className="d-flex align-items-center">
                       <hr className="flex-grow-1" />
@@ -68,7 +63,7 @@ const handleSubmit = (e) => {
                     </div>
                     {/* Form Starts */}
                     {/* Here we apply some javaScript to store our data */}
-                    <form className="m-5" onSubmit={handleSubmit}>
+                    <form className="m-5" onSubmit={getUserInfo}>
                       <div className="mb-3">
                         <label
                           htmlFor="exampleInputEmail1"
@@ -80,12 +75,11 @@ const handleSubmit = (e) => {
                           type="email"
                           className="form-control"
                           id="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          autoComplete="off"
-                          required
-                          placeholder=" Your email address please"
+                         value={email}
+
+                      onChange={(e) =>setEmail(e.target.value)}
                         />
+                        
                         <div id="emailHelp" className="form-text">
                           We'll never share your email with anyone else.
                         </div>
@@ -97,12 +91,11 @@ const handleSubmit = (e) => {
                         <input
                           className="form-control"
                           type="password"
-                          value={password}
-                          onChange={(e) => setpassword(e.target.value)}
                           id="password"
-                          placeholder="Password"
-                          required
+                         value={password}
+                         onChange={(e)=>setpassword(e.target.value)}
                         />
+                        
                       </div>
                       <div className="row">
                         <div className="col-6">
@@ -125,7 +118,7 @@ const handleSubmit = (e) => {
                         </div>
                       </div>
                       <div>
-                        <button className="btn btn-primary form-control mt-3" onClick={showAlert}>Submit</button>
+                        <button className="btn btn-primary form-control mt-3">Submit</button>
                       </div>
                       <div className="mt-3 text-center">
                         <p className="fw-light">

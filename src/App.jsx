@@ -12,17 +12,32 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import Products from './assets/pages/Home/Products';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
 
 function App() {
-  const [user, setUser] = useState(true)
+  const [user, setUser] = useState(false)
 
 
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+
 
 
       <NavigationBar />
