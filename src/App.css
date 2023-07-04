@@ -68,6 +68,62 @@ input {
 .btn-space {
   margin-right: 20px !important;
 }
-.bkgroundCard{
-    background-color:   #738276  
+.bkgroundCard {
+  background-color: #738276;
+}
+.page_404 {
+  padding: 40px 0;
+  background: #fff;
+  font-family: "Arvo", serif;
+}
+
+.page_404 img {
+  width: 100%;
+}
+
+.four_zero_four_bg {
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 400px;
+  background-position: center;
+}
+
+.four_zero_four_bg h1 {
+  font-size: 80px;
+}
+
+.four_zero_four_bg h3 {
+  font-size: 80px;
+}
+
+.link_404 {
+  color: #fff !important;
+  padding: 10px 20px;
+  background: #39ac31;
+  margin: 20px 0;
+  display: inline-block;
+ 
+}
+.contant_box_404 {
+  margin-top: -50px;
+}
+
+
+/* Home */
+.data-text {
+font-weight: bolder;
+  font-size: 100px;
+  line-height: 90px;
+  margin-left: -10px;
+  color: transparent;
+  -webkit-text-stroke: 2.5px #009E60;
+  background: url(images/back.png);
+  -webkit-background-clip: text;
+background-position: 0 0 ;
+animation: back 20s linear infinite;
+
+}
+@keyframes back{
+  100%{
+    background-position: 2000px 0;
+  }
 }
