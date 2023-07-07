@@ -12,7 +12,7 @@ function Home() {
                     <div className="col-md-6 py-5">
                         <div className="p-5 my-5">
                             <h1 className='data-text' >Calzanda</h1>
-                            <p className='fs-3'>A walk-in-a-park online shopping experience!</p>
+                            <p className='typewriter '>A walk-in-a-park online shopping experience!</p>
                             <Link to="/products"><button className='btn btn-outline-success btn-lg rounded-pill mt-4 w-50'>Shop Now!</button></Link>
                         </div>
                     </div>

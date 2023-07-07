@@ -8,7 +8,7 @@ import {FcShop} from 'react-icons/fc';
 function NavigationBar() {
   return (
     
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-success bg-opacity-25">
       <Container>
         <Link to="/" className='Brand text-decoration-none text-success fw-bold fs-4'><span className='largeNavIcon'><FcShop/></span>Calzanda</Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -13,7 +13,7 @@ function Footer() {
           <div className="row text-center text-md-left">
             <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
               <h3 className='mb-4 font-weight-bold text-success'>Calzanda</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, maxime?</p>
+              <p>A walk-in-a-park online shopping experience!</p>
 
             </div>
             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">

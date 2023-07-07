@@ -69,7 +69,7 @@ input {
   margin-right: 20px !important;
 }
 .bkgroundCard {
-  background-color: #738276;
+  background-color: #baf0c4;
 }
 .page_404 {
   padding: 40px 0;
@@ -129,4 +129,30 @@ animation: back 20s linear infinite;
 }
 .fa-3x{
   font-size:1.5em !important;
+}
+
+
+.typewriter{
+  position: relative;
+  font-size: 18px;
+}
+.typewriter::after{
+  content: '|';
+  position: absolute;
+  right: 0;
+  color: white;
+  background-color:#c7e4d9;
+  width: 100%;
+  animation: typing 3s steps(14) alternate infinite,
+              line 1s infinite;
+}
+@keyframes typing{
+  to{
+      width: 0%;
+  }
+}
+@keyframes line {
+  50%{
+      color: transparent;
+  }
 }
