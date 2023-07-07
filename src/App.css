@@ -127,3 +127,6 @@ animation: back 20s linear infinite;
     background-position: 2000px 0;
   }
 }
+.fa-3x{
+  font-size:1.5em !important;
+}

@@ -49,9 +49,9 @@ const userPassword = localStorage.getItem("password")
                     <p className="fw-bold m-3 ">
                       Sign in with
                       <div className="d-flex justify-content-around">
-                        <span className="fa-lg m2" style={{ color: "#3b5998" }}><AiFillFacebook /></span>
-                        <span className="fa-lg m2" style={{ color: "#00acee" }}><AiFillTwitterSquare /></span>
-                        <span className="fa-lg m2" style={{ color: "#0072b1" }}><AiFillLinkedin /></span>
+                        <span className="fa-3x m2" style={{ color: "#3b5998"  }}><AiFillFacebook /></span>
+                        <span className="fa-3x m2" style={{ color: "#00acee" }}><AiFillTwitterSquare /></span>
+                        <span className="fa-3x m2" style={{ color: "#0072b1" }}><AiFillLinkedin /></span>
                       </div>
 
                     </p>
@@ -75,7 +75,7 @@ const userPassword = localStorage.getItem("password")
                           className="form-control"
                           id="email"
                          value={email}
-
+autoComplete="off"
                       onChange={(e) =>setEmail(e.target.value)}
                         />
                         
