@@ -1,7 +1,8 @@
 import React from "react";
 import { useFormik } from "formik";
 import { signUpSchema } from "../../schemas";
-import {FaFacebookF} from 'react-icons/fa'
+import {FaFacebookF , FaLinkedinIn , FaGoogle , FaTwitter} from 'react-icons/fa'
+import { Link } from "react-router-dom";
 
 const initialValues = {
   name: "",
@@ -312,36 +313,36 @@ function RegistrationForm() {
               </p>
               <div className="row text-center">
                 <div className="col mt-3">
-                  <a
-                    href
+                  <Link
+                    
                     className="btn btn-outline-dark border-2 rounded-circle"
                   >
                    <FaFacebookF/>
-                  </a>
+                  </Link>
                 </div>
                 <div className="col mt-3">
-                  <a
-                    href
+                  <Link 
+                    
                     className="btn btn-outline-dark border-2 rounded-circle"
                   >
-                    <i className="fab fa-linkedin fs-5" />
-                  </a>
+                    <FaLinkedinIn/>
+                  </Link>
                 </div>
                 <div className="col mt-3">
-                  <a
-                    href
+                  <Link
+                    
                     className="btn btn-outline-dark border-2 rounded-circle"
                   >
-                    <i className="fab fa-twitter fs-5" />
-                  </a>
+                    <FaTwitter />
+                  </Link>
                 </div>
                 <div className="col my-3">
-                  <a
-                    href
+                  <Link
+                    
                     className="btn btn-outline-dark border-2 rounded-circle"
                   >
-                    <i className="fab fa-google fs-5" />
-                  </a>
+                    <FaGoogle />
+                  </Link>
                 </div>
               </div>
             </div>

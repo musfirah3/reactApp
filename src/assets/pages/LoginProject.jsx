@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import LoginFormImage from './../../images/login.avif'
 import { AiFillFacebook } from 'react-icons/ai'
 import { AiFillTwitterSquare } from 'react-icons/ai'
@@ -8,7 +9,10 @@ import { LoginRouteContext } from "../../context/loginContext/LoginContext";
 import { useNavigate } from "react-router-dom";
 
 
+
+
 function LoginProject() {
+  
   const { dispatch } = useContext(LoginRouteContext)
   const navigate = useNavigate()
   const [email, setEmail] = useState("");
@@ -40,19 +44,19 @@ function LoginProject() {
 
   return (
     <>
-      <section className="bg-success bg-opacity-25">
-        <div className="d-flex flex column min-vh-100 justify-content-center align-items-center">
-          <div className="container">
+      <section className="bg-success bg-opacity-25 ">
+        <div className="d-flex flex column  justify-content-center align-items-center ">
+          <div className="container mt-4">
             <div className="row">
               <div className="col-sm-12 col-md-10 mx-auto bg-white shadow rounded">
                 <div className="row">
                   <div className="col-md-6">
                     {/* Welcome heading */}
-                    <div className="m-5 text-center">
+                    <div className="m-2 text-center">
                       <h1>Welcome!</h1>
                     </div>
                     {/* Sing -in links */}
-                    <p className="fw-bold m-3 ">
+                    <p className="fw-bold m-2">
                       Sign in with
                       <div className="d-flex justify-content-around">
                         <span className="fa-3x m2" style={{ color: "#3b5998" }}><AiFillFacebook /></span>
@@ -62,13 +66,13 @@ function LoginProject() {
 
                     </p>
                     <div className="d-flex align-items-center">
-                      <hr className="flex-grow-1" />
-                      <div>OR</div>
-                      <hr className="flex-grow-1" />
+                      <hr className="flex-grow-1 hr-bw" />
+                      <div> OR </div>
+                      <hr className="flex-grow-1 hr-bw" />
                     </div>
                     {/* Form Starts */}
                     {/* Here we apply some javaScript to store our data */}
-                    <form className="m-5" onSubmit={getUserInfo}>
+                    <form className="m-2" onSubmit={getUserInfo}>
                       <div className="mb-3">
                         <label
                           htmlFor="exampleInputEmail1"
@@ -105,7 +109,7 @@ function LoginProject() {
                       <div className="row">
                         <div className="col-6">
                           <div className="form-check text-start">
-                            <input
+                             <input
                               type="checkbox"
                               className="form-check-input"
                               id="exampleCheck1"
@@ -113,24 +117,29 @@ function LoginProject() {
                             <label
                               className="form-check-label"
                               htmlFor="exampleCheck1"
+                              
                             >
                               Keep me logged in
-                            </label>
+                            </label> 
+
+
+
                           </div>
                         </div>
                         <div className="col-6 text-end">
-                          <a href="#">Forgot Password?</a>
+                          <Link className="text-success">Forgot Password?</Link>
                         </div>
                       </div>
                       <div>
-                        <button className="btn btn-primary form-control mt-3">Submit</button>
+                        <button className="btn btn-outline-success form-control mt-3">Submit</button>
                       </div>
                       <div className="mt-3 text-center">
                         <p className="fw-light">
                           Not a memeber?
-                          <a href="#" className="p-2">
-                            Sign Up
-                          </a>
+                          
+                            <Link to="/registration" className="p-2 text-success">Sign Up</Link>
+                            
+                          
                         </p>
                       </div>
                     </form>
@@ -142,7 +151,7 @@ function LoginProject() {
                       <img
                         src={LoginFormImage} //image here
                         alt="login image"
-                        className="img-fluid py-5 my-5"
+                        className="img-fluid py-3 my-4"
                       />
                     </div>
                   </div>
