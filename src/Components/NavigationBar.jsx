@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {FcShop} from 'react-icons/fc';
+import { LoginRouteContext } from '../context/loginContext/LoginContext';
 
 function NavigationBar() {
+  const {state}=useContext(LoginRouteContext)
   return (
     
     <Navbar expand="lg" className="bg-success bg-opacity-25">

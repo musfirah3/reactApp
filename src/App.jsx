@@ -9,17 +9,19 @@ import ErrorPage from './assets/pages/ErrorPage';
 import ProductPage from './assets/pages/ProductPage';
 import { Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import Products from './assets/pages/Home/Products';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LoginRouteContext } from './context/loginContext/LoginContext';
 
 
 
 
 function App() {
-  const [user, setUser] = useState(true)
+  // const [user, setUser] = useState(true)
+  const {state}=useContext(LoginRouteContext)
 
 
 
@@ -41,25 +43,27 @@ function App() {
 
 
       <NavigationBar />
-      {user ? (
-        <Routes>
+      <Routes>
+      {state.user ? (
+        <>
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<Products />} />
           <Route path='/products/category/:CategoryName' element={<CategoryPage />} />
           <Route path="/products/:productID" element={<ProductPage />} />
           <Route path='*' element={<ErrorPage />} />
-        </Routes>
+        </>
 
       ) : (
-        <Routes>
+        <>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<LoginProject />} />
           <Route path='/registration' element={<RegistrationForm />} />
-          <Route path='*' element={<Navigate to="/login" />} />
-        </Routes>
+          <Route path='*' element={<Navigate to="/login" replace={true} />} />
+        </>
 
       )
       }
+      </Routes>
       <Footer />
     </>
   )
