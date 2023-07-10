@@ -13,6 +13,7 @@ function LoginProject() {
   const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
+  const username="Musfirah"
 
   // getting email or password in local storage
   const userName = localStorage.getItem("email")
@@ -27,7 +28,7 @@ function LoginProject() {
     e.preventDefault();
     if (email === userName && password === userPassword) {
       toast.success("Login Success");
-      dispatch({ type: "Login", payload: { email: userName, password: userPassword } })
+      dispatch({ type: "Login", payload: { email: userName, password: userPassword,username } })
       navigate("/products")
     } else {
       toast.error("Invalid Email OR password");
