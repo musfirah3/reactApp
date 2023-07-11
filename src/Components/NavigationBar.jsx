@@ -5,9 +5,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { FcShop } from 'react-icons/fc';
 import {FaHome} from 'react-icons/fa'
-import {BsFillBoxSeamFill , BsFillBasketFill} from 'react-icons/bs'
+import {BsFillBoxSeamFill } from 'react-icons/bs'
 import {FaUserCheck,FaUserShield} from 'react-icons/fa'
 import { LoginRouteContext } from '../context/loginContext/LoginContext';
+import Cart from '../Components/Cart'
 
 function NavigationBar() {
   const { state } = useContext(LoginRouteContext)
@@ -26,11 +27,15 @@ function NavigationBar() {
               </div>
               </Nav>
               {user ? (
-                <span className='mx-3'><FaUserCheck/> Hi,{user.username}</span>
+                <>
+                <span className='mx-3'><FaUserCheck/> Hi,{user.username}</span> 
+                <Cart/>
+                </>
               ) : (
                 <Link to="/login" className='mx-3 text-decoration-none text-dark'><FaUserShield/> Login</Link>
               )}
-<BsFillBasketFill/>Cart
+{/* <BsFillBasketFill/>Cart */}
+
              
             
           
