@@ -1,21 +1,28 @@
-import React, { useContext ,useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { BsFillBasketFill } from 'react-icons/bs'
-import { CartContext } from '../context/cartContext/CartContext'; 
+import { CartContext } from '../context/cartContext/CartContext';
 import CartItems from './CartItem';
 
 function Cart() {
     const [show, setShow] = useState(false);
-    const {state,dispatch}=useContext(CartContext)
+
+    const { state, dispatch } = useContext(CartContext)
+
+
     return (
         <>
-            <button type="button" onClick={() => setShow(true)} className="btn btn-outline-dark position-relative">
+
+
+            <button type="button" onClick={() => setShow(true)} className="btn btn-dark position-relative">
                 <BsFillBasketFill />
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                {state.cart.length}
+                {state?.cart?.length || 0} 
                     <span className="visually-hidden">unread messages</span>
                 </span>
             </button>
+
+
             <Offcanvas show={show} onHide={() => setShow(false)} placement='end' name="end">
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>
@@ -30,10 +37,11 @@ function Cart() {
                     </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-
-                    {
-                        state.cart.map((val, key) => <CartItems key={key} data={val} />)
-                    }
+                {state?.cart?.length ? (
+            state.cart.map((val, key) => <CartItems key={key} data={val} />)
+          ) : (
+            <p>Cart is empty.</p>
+          )}
 
 
 
@@ -41,7 +49,7 @@ function Cart() {
 
             </Offcanvas>
         </>
-    )
+    );
 }
 
 export default Cart

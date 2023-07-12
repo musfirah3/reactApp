@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function CartItems({data}) {
+   
     return (
         <div className="card mb-3 shadow-sm">
             <div className="row g-0">

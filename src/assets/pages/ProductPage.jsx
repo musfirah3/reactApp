@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import ReactStars from 'react-stars'
@@ -12,33 +12,33 @@ import { AiOutlineFieldTime } from 'react-icons/ai'
 import { GiBrokenShield } from 'react-icons/gi'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import EditReview from '../../Components/EditReview'
+import { CartContext } from '../pages../../../context/cartContext/CartContext'
+
 
 export default function ProductPage() {
 
     const { productID } = useParams()
     const [product, setproduct] = useState({})
+    const {state,dispatch}=useContext(CartContext)
 
     const [productQuantity, setproductQuantity] = useState(1)
 
 
 
-    const addToCart = () => {
-
-        const payload = {
-            ...product,
-            productQuantity,
-            totalPrice: product.price * productQuantity
-        }
-
-        console.log(payload)
-
+    const addToCart = (item) => {
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: item
+        });
+      
         Swal.fire({
-            title: 'Added to Cart!',
-            text: 'Check your Cart for Check Out',
-            icon: 'success',
-            confirmButtonText: 'Continue Shopping'
-        })
-    }
+          title: 'Added to Cart!',
+          text: 'Check your Cart for Checkout',
+          icon: 'success',
+          confirmButtonText: 'Continue Shopping'
+        });
+      };
+      
 
     useEffect(() => {
         axios.get(`https://dummyjson.com/products/${productID}`).then(json => setproduct(json.data))
@@ -51,7 +51,7 @@ export default function ProductPage() {
 
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6 mt-3">
+                    <div className="col-lg-6 mt-3">
 
                         {
                             product?.images?.length > 0 && <ImageSection images={product.images} />
@@ -60,7 +60,7 @@ export default function ProductPage() {
                     </div>
 
 
-                    <div className="col-md-6">
+                    <div className="col-lg-6">
 
                         <div className="container mt-5">
 
@@ -84,8 +84,10 @@ export default function ProductPage() {
                             </Typography.Paragraph>
 
                             <p className="text-secondary">{product.description}</p>
+                            
+                             <div className="d-flex justify-content-between"></div>
                             <p className="d-flex justify-content-around"><TbTruckDelivery /> <TbReplace /><GiBrokenShield /><BiShieldQuarter /><AiOutlineFieldTime /></p>
-                            <p className="d-flex justify-content-around text-secondary fontP"><span>Free delivery</span> <span>30 Days replacement</span> <span>Handle with care</span><span>2 Years warranty</span> <span>On time</span></p>
+                            <p className="d-flex justify-content-around text-secondary fontP"><span>Free delivery</span> <span>30 Days replacement</span> <span>Handle with care</span><span>2 Years warranty</span> <span>On time</span></p> 
                             <hr />
 
                             <p className=' text-secondary'>Availabe: <strong>{product.stock} are in stocks</strong></p>
@@ -101,7 +103,7 @@ export default function ProductPage() {
                                 <button className="btn btn-light mx-3" onClick={() => setproductQuantity(productQuantity + 1)}><AiOutlinePlus /></button>
                             </div>
 
-                            <button className='btn btn-outline-success btn-space' onClick={addToCart}>Add to Cart</button>
+                            <button className='btn btn-outline-success btn-space' onClick={ addToCart}>Add to Cart</button>
 
                             <EditReview />
                         
