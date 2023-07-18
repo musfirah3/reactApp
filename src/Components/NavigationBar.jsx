@@ -7,8 +7,8 @@ import { FcShop } from 'react-icons/fc';
 import {FaHome} from 'react-icons/fa'
 import {BsFillBoxSeamFill } from 'react-icons/bs'
 import {FaUserCheck,FaUserShield} from 'react-icons/fa'
-import { LoginRouteContext } from '../context/loginContext/LoginContext';
-import Cart from '../Components/Cart'
+import { LoginRouteContext } from '../context/loginContext/LoginContext'
+import Cart from './Cart';
 
 function NavigationBar() {
   const { state } = useContext(LoginRouteContext)
@@ -29,7 +29,7 @@ function NavigationBar() {
               {user ? (
                 <>
                 <span className='mx-3'><FaUserCheck/> Hi,{user.username}</span> 
-                <Cart/>
+                <span><Cart/></span>
                 </>
               ) : (
                 <Link to="/login" className='mx-3 text-decoration-none text-dark'><FaUserShield/> Login</Link>

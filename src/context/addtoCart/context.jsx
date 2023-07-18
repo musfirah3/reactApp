@@ -1,9 +1,9 @@
 import React, { createContext, useEffect, useReducer } from 'react'
-import { reducer } from './CartReducer'
+import { reducer } from './reducer'
 
 const getCartData = () => {
     let cartData = localStorage.getItem('cart')
-    if(cartData == []){
+    if(cartData==[]){
         return []
     }
     else{
@@ -11,6 +11,9 @@ const getCartData = () => {
     }
 
 }
+
+
+
 
 const initialData = {
     cart: getCartData()
@@ -31,4 +34,3 @@ export default function CartContextProvider({ children }) {
         </CartContext.Provider>
     )
 }
-

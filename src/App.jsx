@@ -20,7 +20,7 @@ import { LoginRouteContext } from './context/loginContext/LoginContext';
 
 
 function App() {
-  // const [user, setUser] = useState(true)
+  
   const {state}=useContext(LoginRouteContext)
 
 

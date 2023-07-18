@@ -6,3 +6,4 @@ export const getAllProducts = () => {
       (res) => res.json()
     );
   };
+

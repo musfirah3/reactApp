@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import ReactStars from 'react-stars'
@@ -12,24 +12,34 @@ import { AiOutlineFieldTime } from 'react-icons/ai'
 import { GiBrokenShield } from 'react-icons/gi'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import EditReview from '../../Components/EditReview'
-import { CartContext } from '../pages../../../context/cartContext/CartContext'
+import { CartContext } from '../../context/addtoCart/context'
 
 
 export default function ProductPage() {
 
     const { productID } = useParams()
     const [product, setproduct] = useState({})
-    const {state,dispatch}=useContext(CartContext)
+    
 
     const [productQuantity, setproductQuantity] = useState(1)
+    const {state,dispatch} = useContext(CartContext)
 
 
+    const addtoCart = (item) => {
+        dispatch(
+            {
+                type : "ADD_TO_CART",
+                payload : item
+            }
+        )
 
-    const addToCart = (item) => {
-        dispatch({
-          type: "ADD_TO_CART",
-          payload: item
-        });
+        // const payload = {
+        //     ...product,
+        //     productQuantity,
+        //     totalPrice: product.price * productQuantity
+        // }
+
+        // console.log(payload)
       
         Swal.fire({
           title: 'Added to Cart!',
@@ -102,11 +112,10 @@ export default function ProductPage() {
                                 {productQuantity}
                                 <button className="btn btn-light mx-3" onClick={() => setproductQuantity(productQuantity + 1)}><AiOutlinePlus /></button>
                             </div>
-
-                            <button className='btn btn-outline-success btn-space' onClick={ addToCart}>Add to Cart</button>
-
+                            
+                        <button className='btn-space btn btn-outline-success' onClick={()=>addtoCart(product)}>Add to Cart</button>
                             <EditReview />
-                        
+                           
                         </div>
                     </div>
                 </div>
